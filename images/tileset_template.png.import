@@ -7,10 +7,10 @@ path="res://.import/tileset_template.png-8716cf898081d1819c07eea2aa724864.stex"
 [deps]
 
 source_file="res://images/tileset_template.png"
-source_md5="600a7353bdf2d9f6463caf7b4f810eac"
+source_md5="fd8ca5feccea2794cb2a1aea8d5e2a70"
 
 dest_files=[ "res://.import/tileset_template.png-8716cf898081d1819c07eea2aa724864.stex" ]
-dest_md5="42b306bf9a6abfc5e289208ffd57ed50"
+dest_md5="f2e7ba9789036b606881542066e9c3d8"
 
 [params]
 
