@@ -9,7 +9,7 @@
 [ext_resource path="res://images/menu_button_off.png" type="Texture" id=7]
 [ext_resource path="res://images/menu_button_on.png" type="Texture" id=8]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
@@ -19,9 +19,8 @@ extents = Vector2( 10, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 8, 12 )
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=3]
 
-resource_name = "MenuOnOff"
 length = 0.5
 loop = false
 step = 0.1
@@ -38,7 +37,7 @@ tracks/0/keys = {
 "values": [ Vector2( -64, 0 ), Vector2( 0, 0 ) ]
 }
 
-[node name="MainScene" type="Node" index="0"]
+[node name="MainScene" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -67,7 +66,7 @@ texture = ExtResource( 2 )
 
 position = Vector2( -1.90735e-06, 0 )
 scale = Vector2( 3.2, 3.2 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="wall2" type="StaticBody2D" parent="." index="1"]
 
@@ -94,7 +93,7 @@ texture = ExtResource( 2 )
 
 position = Vector2( -1.90735e-06, 0 )
 scale = Vector2( 3.2, 3.2 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Manson" type="KinematicBody2D" parent="." index="2"]
 
@@ -146,7 +145,6 @@ script = ExtResource( 5 )
 
 [node name="Menu" parent="Manson/Camera2D" index="0" instance=ExtResource( 6 )]
 
-editor/display_folded = true
 position = Vector2( -64, 0 )
 
 [node name="menu_button_off" type="TextureButton" parent="Manson/Camera2D/Menu" index="2"]
@@ -202,7 +200,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/MenuOnOff = SubResource( 1 )
+anims/MenuOnOff = SubResource( 3 )
 blend_times = [  ]
 
 [connection signal="pressed" from="Manson/Camera2D/Menu/menu_button_off" to="." method="_on_menu_button_off_pressed"]

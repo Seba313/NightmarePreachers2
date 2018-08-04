@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/Menu.gd" type="Script" id=1]
 [ext_resource path="res://images/menu_bg.png" type="Texture" id=2]
 [ext_resource path="res://theme/lowrezjam_2018.tres" type="Theme" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=4]
 
-[node name="Menu" type="Node2D"]
+[node name="Menu" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -23,8 +22,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -26.0
 margin_top = -27.0
-margin_right = 11.0
-margin_bottom = -23.0
+margin_right = 28.0
+margin_bottom = -11.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
@@ -32,6 +31,9 @@ size_flags_horizontal = 1
 size_flags_vertical = 4
 theme = ExtResource( 3 )
 text = "Settings"
+autowrap = true
+clip_text = true
+uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -39,7 +41,6 @@ _sections_unfolded = [ "Theme" ]
 
 [node name="TabContainer" type="TabContainer" parent="." index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -64,8 +65,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 2.0
-margin_bottom = -6.0
+margin_top = 9.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -73,13 +73,36 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 tab_align = 0
 scrolling_enabled = true
-_sections_unfolded = [ "Rect" ]
 
-[node name="icon" type="Sprite" parent="TabContainer/1" index="0"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/1" index="0"]
 
-position = Vector2( 26.4978, 24.8063 )
-scale = Vector2( 0.358647, 0.342337 )
-texture = ExtResource( 4 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 55.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 3 )
+bbcode_enabled = false
+bbcode_text = "ert gf hgrh fghfg hfgh  f hfgh fdgh rfthy dtrh gf"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "ert gf hgrh fghfg hfgh  f hfgh fdgh rfthy dtrh gf"
+scroll_active = false
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Theme" ]
 
 [node name="2" type="Tabs" parent="TabContainer" index="1"]
 
@@ -96,5 +119,26 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 tab_align = 0
 scrolling_enabled = true
+
+[node name="CheckBox" type="CheckBox" parent="TabContainer/2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 24.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 0
 
 

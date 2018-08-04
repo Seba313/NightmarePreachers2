@@ -7,9 +7,11 @@ extends Camera2D
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	#set_enable_follow_smoothing(true)
 	pass
 
 func _process(delta):
+	
 	align()
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
