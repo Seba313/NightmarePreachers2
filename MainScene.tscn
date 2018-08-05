@@ -1,23 +1,45 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://MainScene.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Manson.gd" type="Script" id=3]
-[ext_resource path="res://images/manson.png" type="Texture" id=4]
-[ext_resource path="res://Camera2D.gd" type="Script" id=5]
-[ext_resource path="res://assets/Menu.tscn" type="PackedScene" id=6]
-[ext_resource path="res://images/menu_button_off.png" type="Texture" id=7]
-[ext_resource path="res://images/menu_button_on.png" type="Texture" id=8]
+[ext_resource path="res://tilesets/castle_tiles.tres" type="TileSet" id=2]
+[ext_resource path="res://tilesets/inside_tiles.tres" type="TileSet" id=3]
+[ext_resource path="res://tilesets/shadow_tiles.tres" type="TileSet" id=4]
+[ext_resource path="res://images/torch2.png" type="Texture" id=5]
+[ext_resource path="res://images/torch1.png" type="Texture" id=6]
+[ext_resource path="res://images/torch4.png" type="Texture" id=7]
+[ext_resource path="res://images/torch3.png" type="Texture" id=8]
+[ext_resource path="res://Manson.gd" type="Script" id=9]
+[ext_resource path="res://images/manson_idle_0.png" type="Texture" id=10]
+[ext_resource path="res://images/manson_idle_1.png" type="Texture" id=11]
+[ext_resource path="res://images/manson_idle_2.png" type="Texture" id=12]
+[ext_resource path="res://images/manson_idle_3.png" type="Texture" id=13]
+[ext_resource path="res://Camera2D.gd" type="Script" id=14]
+[ext_resource path="res://assets/Menu.tscn" type="PackedScene" id=15]
+[ext_resource path="res://images/menu_button_off.png" type="Texture" id=16]
+[ext_resource path="res://images/menu_button_on.png" type="Texture" id=17]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=4]
 
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "burn",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 12 )
+extents = Vector2( 7.07438, 12 )
 
 [sub_resource type="Animation" id=3]
 
@@ -37,80 +59,156 @@ tracks/0/keys = {
 "values": [ Vector2( -64, 0 ), Vector2( 0, 0 ) ]
 }
 
-[node name="MainScene" type="Node"]
+[node name="MainScene" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
-[node name="wall" type="StaticBody2D" parent="." index="0"]
+[node name="Level" type="Node2D" parent="." index="0"]
 
-editor/display_folded = true
-modulate = Color( 0.117188, 0.117188, 0.117188, 1 )
-position = Vector2( 32, 80 )
-input_pickable = false
+[node name="CASTLE" type="TileMap" parent="Level" index="0"]
+
+position = Vector2( 36, 32 )
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
 collision_layer = 1
 collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Visibility" ]
-__meta__ = {
-"_edit_group_": true
-}
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -458747, 26, 0, -458746, 26, 0, -458745, 26, 0, -458744, 26, 0, -458743, 26, 0, -393211, 26, 0, -393210, 26, 0, -393209, 26, 0, -393208, 26, 0, -393207, 26, 0, -393206, 8, 0, -393205, 9, 0, -393204, 9, 0, -393203, 9, 0, -393202, 9, 0, -393201, 9, 0, -393200, 17, 0, -393199, 26, 0, -262148, 6, 0, -262147, 6, 0, -262146, 6, 0, -262145, 6, 0, -327680, 6, 0, -327679, 6, 0, -327678, 6, 0, -327677, 6, 0, -327676, 6, 0, -327675, 26, 0, -327674, 26, 0, -327673, 26, 0, -327672, 26, 0, -327671, 26, 0, -327670, 17, 0, -327669, 17, 0, -327668, 17, 0, -327667, 17, 0, -327666, 17, 0, -327665, 17, 0, -327664, 26, 0, -327663, 17, 0, -196612, 12, 0, -196611, 13, 0, -196610, 13, 0, -196609, 13, 0, -262144, 15, 0, -262143, 22, 0, -262142, 22, 0, -262141, 22, 0, -262140, 22, 0, -262139, 22, 0, -262138, 3, 0, -262137, 26, 0, -262136, 26, 0, -262135, 18, 0, -262134, 25, 0, -262133, 18, 0, -262132, 18, 0, -262131, 26, 0, -262130, 18, 0, -262129, 26, 0, -262128, 18, 0, -262127, 26, 0, -262126, 26, 0, -131076, 16, 0, -131075, 26, 0, -131074, 25, 0, -131073, 18, 0, -196608, 8, 0, -196607, 9, 0, -196606, 9, 0, -196605, 9, 0, -196604, 9, 0, -196603, 10, 0, -196602, 11, 0, -196601, 26, 0, -196600, 25, 0, -196599, 54, 0, -196598, 57, 0, -196597, 18, 0, -196596, 25, 0, -196595, 25, 0, -196594, 18, 0, -196593, 17, 0, -196592, 26, 0, -196591, 18, 0, -196590, 17, 0, -65540, 16, 0, -65539, 17, 0, -65538, 18, 0, -65537, 26, 0, -131072, 18, 0, -131071, 17, 0, -131070, 17, 0, -131069, 25, 0, -131068, 17, 0, -131067, 17, 0, -131066, 26, 0, -131065, 25, 0, -131064, 26, 0, -131063, 26, 0, -131062, 54, 0, -131061, 57, 0, -131060, 18, 0, -131059, 18, 0, -131058, 18, 0, -131057, 26, 0, -131056, 25, 0, -131055, 26, 0, -131054, 18, 0, -4, 16, 0, -3, 18, 0, -2, 25, 0, -1, 18, 0, -65536, 26, 0, -65535, 17, 0, -65534, 18, 0, -65533, 17, 0, -65532, 18, 0, -65531, 17, 0, -65530, 26, 0, -65529, 26, 0, -65528, 18, 0, -65527, 54, 0, -65526, 55, 0, -65525, 56, 0, -65524, 55, 0, -65523, 56, 0, -65522, 57, 0, -65521, 18, 0, -65520, 17, 0, -65519, 18, 0, -65518, 17, 0, 65532, 16, 0, 65533, 17, 0, 65534, 26, 0, 65535, 18, 0, 0, 18, 0, 1, 0, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 3, 0, 6, 26, 0, 7, 26, 0, 8, 26, 0, 9, 18, 0, 10, 18, 0, 11, 25, 0, 12, 18, 0, 13, 25, 0, 14, 18, 0, 15, 25, 0, 16, 18, 0, 17, 54, 0, 18, 57, 0, 131068, 20, 0, 131069, 22, 0, 131070, 22, 0, 131071, 21, 0, 65536, 21, 0, 65537, 23, 0, 65538, 33, 0, 65539, 33, 0, 65540, 33, 0, 65541, 20, 0, 65542, 2, 0, 65543, 2, 0, 65544, 22, 0, 65545, 21, 0, 65546, 21, 0, 65547, 21, 0, 65548, 21, 0, 65549, 21, 0, 65550, 21, 0, 65551, 21, 0, 65552, 21, 0, 65553, 21, 0, 196604, 6, 0, 196605, 6, 0, 196606, 50, 0, 196607, 50, 0, 131072, 51, 0, 131073, 50, 0, 131074, 50, 0, 131075, 51, 0, 131076, 53, 0, 131077, 51, 0, 131078, 53, 0, 131079, 53, 0, 131080, 52, 0 )
+_sections_unfolded = [ "Cell", "Transform" ]
 
-[node name="Sprite" type="Sprite" parent="wall" index="0"]
+[node name="INSIDE_ELEMENTS" type="TileMap" parent="Level" index="1"]
 
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall" index="1"]
-
-position = Vector2( -1.90735e-06, 0 )
-scale = Vector2( 3.2, 3.2 )
-shape = SubResource( 1 )
-
-[node name="wall2" type="StaticBody2D" parent="." index="1"]
-
-editor/display_folded = true
-modulate = Color( 0.117188, 0.117188, 0.117188, 1 )
-position = Vector2( 96, 95 )
-input_pickable = false
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
 collision_layer = 1
 collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Visibility" ]
-__meta__ = {
-"_edit_group_": true
-}
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -196597, 0, 0, -196596, 2, 0, -196595, 1, 0, -196594, 2, 0, -196593, 3, 0, -131060, 5, 0, -131058, 4, 0, -1, 0, 0, -65536, 2, 0, -65535, 3, 0, -65522, 4, 0, 0, 4, 0, 3, 0, 0, 4, 1, 0, 5, 2, 0, 6, 1, 0, 7, 3, 0, 14, 5, 0, 65536, 4, 0, 65541, 5, 0, 131072, 5, 0 )
+_sections_unfolded = [ "Cell", "Transform" ]
 
-[node name="Sprite" type="Sprite" parent="wall2" index="0"]
+[node name="SHADOWS" type="TileMap" parent="Level" index="2"]
 
-texture = ExtResource( 2 )
+position = Vector2( 4, 0 )
+mode = 0
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -131061, 0, 0, -131060, 2, 0, -1, 9, 0, -65536, 10, 0, -65535, 11, 0, -65527, 5, 0, -65524, 0, 0, -65523, 2, 0, 65535, 5, 0, 1, 6, 0, 2, 7, 0, 3, 7, 0, 4, 7, 0, 5, 7, 0, 6, 7, 0, 7, 7, 0, 8, 7, 0, 9, 8, 0, 11, 0, 0, 12, 16, 0, 13, 16, 0, 14, 16, 0, 15, 16, 0, 16, 2, 0, 131071, 5, 0, 65538, 0, 0, 65539, 16, 0, 65540, 16, 0, 65541, 16, 0, 65542, 16, 0, 65543, 16, 0, 65544, 2, 0, 196607, 15, 0, 131072, 16, 0, 131073, 16, 0, 131074, 17, 0, 131080, 15, 0, 131081, 16, 0, 131082, 16, 0, 131083, 16, 0, 131084, 16, 0, 131085, 16, 0, 131086, 16, 0, 131087, 16, 0, 131088, 16, 0, 131089, 16, 0, 131090, 16, 0, 131091, 16, 0, 131092, 16, 0 )
+_sections_unfolded = [ "Cell", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2" index="1"]
+[node name="Torch" type="AnimatedSprite" parent="Level" index="3"]
 
-position = Vector2( -1.90735e-06, 0 )
-scale = Vector2( 3.2, 3.2 )
-shape = SubResource( 1 )
+position = Vector2( 72.8467, 16.2819 )
+frames = SubResource( 4 )
+animation = "burn"
+frame = 3
+playing = true
+_sections_unfolded = [ "Transform" ]
 
-[node name="Manson" type="KinematicBody2D" parent="." index="2"]
+[node name="Torch2" type="AnimatedSprite" parent="Level" index="4"]
+
+position = Vector2( 106.847, 16.2819 )
+frames = SubResource( 4 )
+animation = "burn"
+frame = 2
+playing = true
+flip_h = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="Torch3" type="AnimatedSprite" parent="Level" index="5"]
+
+position = Vector2( -7.15326, 32.2819 )
+frames = SubResource( 4 )
+animation = "burn"
+frame = 2
+playing = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="Torch4" type="AnimatedSprite" parent="Level" index="6"]
+
+position = Vector2( 251.675, 5.16882 )
+frames = SubResource( 4 )
+animation = "burn"
+frame = 2
+playing = true
+flip_h = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="Torch5" type="AnimatedSprite" parent="Level" index="7"]
+
+position = Vector2( 228.015, 33.4892 )
+frames = SubResource( 4 )
+animation = "burn"
+frame = 2
+playing = true
+flip_h = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="Torch6" type="AnimatedSprite" parent="Level" index="8"]
+
+position = Vector2( 321.938, 20.9422 )
+frames = SubResource( 4 )
+animation = "burn"
+frame = 1
+playing = true
+flip_h = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="Manson" type="KinematicBody2D" parent="." index="1"]
 
 position = Vector2( 32, 32 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 3 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Manson" index="0"]
+[node name="Sprite" type="AnimatedSprite" parent="Manson" index="0"]
 
-texture = ExtResource( 4 )
+position = Vector2( -4, 0 )
+frames = SubResource( 5 )
+animation = "idle"
+frame = 2
+playing = true
+_sections_unfolded = [ "Animation", "Region" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Manson" index="1"]
 
@@ -141,9 +239,9 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 5 )
+script = ExtResource( 14 )
 
-[node name="Menu" parent="Manson/Camera2D" index="0" instance=ExtResource( 6 )]
+[node name="Menu" parent="Manson/Camera2D" index="0" instance=ExtResource( 15 )]
 
 position = Vector2( -64, 0 )
 
@@ -167,7 +265,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 16 )
 _sections_unfolded = [ "Anchor", "Margin", "Material", "Rect", "Textures", "Theme", "Visibility" ]
 
 [node name="menu_button_on" type="TextureButton" parent="Manson/Camera2D/Menu" index="3"]
@@ -190,10 +288,10 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 8 )
+texture_normal = ExtResource( 17 )
 _sections_unfolded = [ "Anchor", "Margin", "Material", "Rect", "Textures", "Visibility" ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 
 root_node = NodePath("..")
 autoplay = ""

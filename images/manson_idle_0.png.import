@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tileset_template.png-8716cf898081d1819c07eea2aa724864.stex"
+path="res://.import/manson_idle_0.png-3582e0bdddfbd8f02f4cc4372417471c.stex"
 
 [deps]
 
-source_file="res://images/tileset_template.png"
-source_md5="cd4c20c90b1612207a46014676818a1f"
+source_file="res://images/manson_idle_0.png"
+source_md5="4fbc66fdfeea2f6f194f10228b6454de"
 
-dest_files=[ "res://.import/tileset_template.png-8716cf898081d1819c07eea2aa724864.stex" ]
-dest_md5="75aa23da56040bade6a26b0dd0492fa7"
+dest_files=[ "res://.import/manson_idle_0.png-3582e0bdddfbd8f02f4cc4372417471c.stex" ]
+dest_md5="c009295bc76b6423184d34829c79c71c"
 
 [params]
 
