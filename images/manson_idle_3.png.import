@@ -7,10 +7,7 @@ path="res://.import/manson_idle_3.png-7f96acdf37c9219c10de2b67bbe49eda.stex"
 [deps]
 
 source_file="res://images/manson_idle_3.png"
-source_md5="c544d8f9f60357225534f351fc6d5f52"
-
 dest_files=[ "res://.import/manson_idle_3.png-7f96acdf37c9219c10de2b67bbe49eda.stex" ]
-dest_md5="492ab80af9f9e52fdc651ed40a3bd5f5"
 
 [params]
 

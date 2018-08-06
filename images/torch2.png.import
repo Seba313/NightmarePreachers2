@@ -7,10 +7,7 @@ path="res://.import/torch2.png-551b270a1b50b0eef93e0dcd6caf6d6c.stex"
 [deps]
 
 source_file="res://images/torch2.png"
-source_md5="210cd47b8a1c8d78aa98fe56d302c25d"
-
 dest_files=[ "res://.import/torch2.png-551b270a1b50b0eef93e0dcd6caf6d6c.stex" ]
-dest_md5="038406b0e10307a6d7176d6a80e84496"
 
 [params]
 

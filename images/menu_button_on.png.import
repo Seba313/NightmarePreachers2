@@ -7,10 +7,7 @@ path="res://.import/menu_button_on.png-6ca679ef560376a6f9a5aba6bcecee27.stex"
 [deps]
 
 source_file="res://images/menu_button_on.png"
-source_md5="dc960108bfe57fdaa772c8536c5ca8eb"
-
 dest_files=[ "res://.import/menu_button_on.png-6ca679ef560376a6f9a5aba6bcecee27.stex" ]
-dest_md5="ce9bc642475b05c013639ba66445b84a"
 
 [params]
 
