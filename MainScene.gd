@@ -5,7 +5,7 @@ extends Node
 # var b = "textvar"
 
 func _ready():
-	OS.window_size = Vector2(640, 640)
+	# OS.window_size = Vector2(640, 640)
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
